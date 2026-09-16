@@ -1,0 +1,1 @@
+# local-tier-list-maker
