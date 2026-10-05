@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: tierlistapp
+  data:
+    mongodb:
+      uri: mongodb://localhost:27018/tierlistdb
+
+s3:
+  # обязательные параметры
+  access_key: any
+  secret_key: any
+  endpoint_url: http://localhost:8333
+  bucket_name: tierlists
+  path_style_access: true
+  region_name: us-east-1

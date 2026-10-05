@@ -1,0 +1,27 @@
+services:
+
+  mongodb_tierlist:
+    image: mongo:7
+    restart: unless-stopped
+    ports:
+      - "27018:27017"
+    environment:
+      MONGO_INITDB_DATABASE: tierlistdb
+    volumes:
+      - mongodb_data:/data/db
+
+  seaweedfs_tierlist:
+    image: chrislusf/seaweedfs:latest
+    command: server -dir=/data -s3
+    ports:
+      - "8333:8333"   # S3 API
+      - "8888:8888"   # веб-интерфейс
+      - "9333:9333"   # статус кластера
+    volumes:
+      - seaweed_data:/data
+    restart: unless-stopped
+
+
+volumes:
+  mongodb_data:
+  seaweed_data:
